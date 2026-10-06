@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the site as a single polished visual homepage with CDN-backed placeholder assets unless the user requests more pages; this preserves the simple gallery focus.
