@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Heart, Image, PawPrint, Sparkles } from "lucide-react";
+import { Fish, Heart, Image, PawPrint, Sparkles } from "lucide-react";
 
 import bunnyGrassAsset from "@/assets/bunny-grass.jpg.asset.json";
 import catWindowAsset from "@/assets/cat-window.jpg.asset.json";
@@ -37,6 +37,17 @@ const galleryItems = [
 
 const gifPlaceholders = ["Looping GIF placeholder", "Tiny reaction GIF placeholder", "Sparkly moment GIF placeholder"];
 
+const floatingBubbles = [
+  "left-[7%] top-[19rem] size-7",
+  "left-[13%] top-[33rem] size-4",
+  "left-[42%] top-[18rem] size-5",
+  "right-[18%] top-[8rem] size-9",
+  "right-[7%] top-[31rem] size-5",
+  "left-[31%] top-[53rem] size-8",
+  "right-[31%] top-[50rem] size-4",
+  "left-[4%] top-[72rem] size-6",
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -63,7 +74,12 @@ function Index() {
   return (
     <main className="aero-page bubble-field text-aero-ink">
       <div className="pointer-events-none absolute inset-0 water-ripple opacity-70" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-aero-cream/70 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-aero-sun/70 blur-3xl" />
+      <div className="pointer-events-none absolute right-[11%] top-12 size-32 sun-flare opacity-80" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-56 grass-bed opacity-30" />
+      {floatingBubbles.map((bubble) => (
+        <span key={bubble} className={`bubble-orb pointer-events-none absolute ${bubble}`} aria-hidden="true" />
+      ))}
 
       <header className="sticky top-0 z-30 px-4 py-4 sm:px-6">
         <nav className="glass-panel mx-auto flex max-w-6xl items-center justify-between rounded-full px-4 py-3 sm:px-6">
@@ -91,13 +107,13 @@ function Index() {
         <div className="relative z-10">
           <div className="glossy-chip mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-extrabold text-aero-ink/80">
             <Sparkles className="size-4 text-primary" aria-hidden="true" />
-            Soft bubbles, tiny paws, sunny memories
+            Sea-blue bubbles, green grass, sunny memories
           </div>
           <h1 className="max-w-3xl font-display text-5xl font-black leading-[0.95] text-aero-ink sm:text-6xl lg:text-7xl">
-            A cute little aqua diary for photos and GIFs.
+            A bright green aqua diary for photos and GIFs.
           </h1>
           <p className="mt-6 max-w-2xl text-lg font-medium leading-8 text-muted-foreground sm:text-xl">
-            Glossy glass panels, pastel water glints, paw-print trails, and cozy animal details are already in place for your favorite pictures later.
+            Glossy glass panels, fresh grass tones, sea-blue water glints, paw-print trails, and cozy animal details are ready for your favorite pictures later.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild variant="aero" size="lg">
@@ -115,6 +131,11 @@ function Index() {
             <div className="relative overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft">
               <img src={waterShimmerAsset.url} alt="Sunlit ocean water shimmer placeholder" className="h-[28rem] w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-b from-aero-glass-strong/60 via-transparent to-aero-sky-deep/35" />
+              <div className="grass-bed absolute bottom-0 left-0 right-0 h-28 opacity-45" />
+              <div className="absolute left-6 top-8 flex gap-3 text-aero-sun">
+                <Fish className="size-7 rotate-12 drop-shadow-md" aria-hidden="true" />
+                <Fish className="mt-10 size-5 -rotate-12 text-aero-grass drop-shadow-md" aria-hidden="true" />
+              </div>
               <div className="absolute bottom-5 left-5 right-5 rounded-[1.4rem] bg-aero-glass-strong/75 p-4 shadow-2xl backdrop-blur-md">
                 <p className="text-xs font-black uppercase tracking-widest text-primary">Main picture placeholder</p>
                 <p className="mt-1 text-2xl font-black text-aero-ink">Your favorite photo can live here</p>
@@ -134,7 +155,7 @@ function Index() {
         <div className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
             <p className="font-display text-sm font-black uppercase tracking-widest text-primary">Personal photos</p>
-            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink sm:text-5xl">Glossy animal frames</h2>
+            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink sm:text-5xl">Green glossy animal frames</h2>
           </div>
           <p className="max-w-md text-base font-medium leading-7 text-muted-foreground">
             Each area is clearly labeled so the example photos can be replaced with your own pictures later.
@@ -146,7 +167,7 @@ function Index() {
             <article key={item.label} className="group cat-ear-card glass-panel rounded-[1.8rem] p-3 transition duration-300 hover:-translate-y-1">
               <div className="animal-frame relative aspect-[4/5] overflow-hidden bg-aero-soft shadow-xl">
                 <img src={item.src} alt={item.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-b from-aero-glass-strong/45 via-transparent to-aero-ink/45 opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-b from-aero-glass-strong/45 via-transparent to-aero-leaf/45 opacity-80" />
                 <span className="glossy-chip absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black text-aero-ink/75">
                   Paw slot {index + 1}
                 </span>
@@ -167,7 +188,7 @@ function Index() {
           <CornerBunny className="absolute right-6 top-6 hidden w-24 text-primary/55 md:block" />
           <div className="max-w-2xl">
             <p className="font-display text-sm font-black uppercase tracking-widest text-primary">GIF showcase</p>
-            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink sm:text-5xl">Static spots for tiny moving memories</h2>
+            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink sm:text-5xl">Static spots with bubbly sea shine</h2>
             <p className="mt-4 text-base font-medium leading-7 text-muted-foreground">
               These polished placeholders stay still for now and are ready for hand-picked GIFs later.
             </p>
@@ -177,7 +198,8 @@ function Index() {
             {gifPlaceholders.map((label) => (
               <div key={label} className="relative min-h-56 overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft p-4 shadow-xl">
                 <img src={waterShimmerAsset.url} alt="Water shimmer GIF placeholder" className="absolute inset-0 h-full w-full object-cover opacity-75" />
-                <div className="absolute inset-0 bg-gradient-to-br from-aero-glass-strong/75 via-aero-sky/45 to-aero-blush/45" />
+                <div className="absolute inset-0 bg-gradient-to-br from-aero-glass-strong/75 via-aero-sea/45 to-aero-grass/45" />
+                <div className="grass-bed absolute bottom-0 left-0 right-0 h-20 opacity-35" />
                 <div className="relative flex h-full min-h-48 flex-col justify-between">
                   <span className="glossy-chip inline-flex w-fit items-center gap-2 rounded-full px-3 py-2 text-xs font-black text-aero-ink/75">
                     <Image className="size-4 text-primary" aria-hidden="true" />
@@ -198,13 +220,13 @@ function Index() {
         <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="glass-panel cat-ear-card rounded-[2rem] p-7">
             <p className="font-display text-sm font-black uppercase tracking-widest text-primary">Tiny details</p>
-            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink">Handcrafted, soft, and tidy</h2>
+            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink">Fresh, bubbly, and early-2000s bright</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               "Paw print dividers",
               "Cat-ear panel accents",
-              "Animal-shaped photo frames",
+              "Sea bubbles and green shine",
             ].map((detail) => (
               <div key={detail} className="glossy-chip rounded-[1.4rem] p-5 text-center">
                 <PawPrint className="mx-auto mb-3 size-7 text-paw" aria-hidden="true" />
