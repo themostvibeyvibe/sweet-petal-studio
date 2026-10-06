@@ -78,16 +78,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
+      { title: "Aero Pawprints" },
+      {
+        name: "description",
+        content: "A cute Frutiger Aero gallery with glossy photo and GIF placeholders.",
+      },
+      { name: "author", content: "Aero Pawprints" },
+      { property: "og:title", content: "Aero Pawprints" },
       { property: "og:description", content: "Lovable Generated Project" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      {
+        name: "twitter:description",
+        content: "A cute Frutiger Aero gallery with glossy photo and GIF placeholders.",
+      },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800;900&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
