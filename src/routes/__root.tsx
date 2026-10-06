@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aero Pawprints" },
+      { title: "HAPPY BIRTHDAY to my beautiful lady and bestest friend" },
       {
         name: "description",
         content: "A cute Frutiger Aero gallery with glossy photo and GIF placeholders.",

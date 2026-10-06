@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Fish, Heart, Image, PawPrint, Sparkles } from "lucide-react";
+import { useState } from "react";
 
 import bunnyGrassAsset from "@/assets/bunny-grass.jpg.asset.json";
 import catWindowAsset from "@/assets/cat-window.jpg.asset.json";
@@ -12,30 +13,43 @@ const galleryItems = [
   {
     label: "Personal picture placeholder 01",
     caption: "A favorite portrait will go here",
-    src: catWindowAsset.url,
+    src: "/1.jpeg",
     alt: "Orange cat sitting by a bright window",
   },
   {
     label: "Personal picture placeholder 02",
     caption: "A sweet everyday moment will go here",
-    src: dogMeadowAsset.url,
+    src: "/2.jpeg",
     alt: "Happy dog standing in a meadow",
   },
   {
     label: "Personal picture placeholder 03",
     caption: "A cozy memory will go here",
-    src: bunnyGrassAsset.url,
+    src: "/5.jpeg",
     alt: "Small rabbit resting in green grass",
   },
   {
     label: "Personal picture placeholder 04",
     caption: "A bright outdoor photo will go here",
-    src: foxSnowAsset.url,
+    src: "/3.jpeg",
     alt: "Fox walking through pale snow",
   },
 ];
 
-const gifPlaceholders = ["Looping GIF placeholder", "Tiny reaction GIF placeholder", "Sparkly moment GIF placeholder"];
+const gifPlaceholders = [
+  {
+    label: "Looping GIF placeholder",
+    src: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExamY5NXZ0dmNheHgzYzZzYmc4c3EwNjRwbHhkcnB2ZDQ2NWNiNWw5ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l3vR4Ell5crP9nYR2/giphy.webp",
+  },
+  {
+    label: "Tiny reaction GIF placeholder",
+    src: waterShimmerAsset.url,
+  },
+  {
+    label: "Sparkly moment GIF placeholder",
+    src: waterShimmerAsset.url,
+  },
+];
 
 const floatingBubbles = [
   "left-[7%] top-[19rem] size-7",
@@ -51,13 +65,13 @@ const floatingBubbles = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aero Pawprints | Cute Frutiger Aero Gallery" },
+      { title: "HAPPY BIRTHDAY to my beautiful lady and bestest friend" },
       {
         name: "description",
         content:
           "A soft Frutiger Aero personal gallery with glossy animal details, photo placeholders, and GIF spaces ready for future memories.",
       },
-      { property: "og:title", content: "Aero Pawprints | Cute Frutiger Aero Gallery" },
+      { property: "og:title", content: "HAPPY BIRTHDAY to my beautiful lady and bestest friend" },
       {
         property: "og:description",
         content:
@@ -71,8 +85,41 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const noteItems = [
+    {
+      label: "Paw print dividers",
+      src: "/13.jpeg",
+      alt: "Paw print dividers",
+    },
+    {
+      label: "Cat-ear panel accents",
+      src: "/12.jpeg",
+      alt: "Cat-ear panel accents",
+    },
+    {
+      label: "Sea bubbles and green shine",
+      src: "/12313.jpeg",
+      alt: "Sea bubbles and green shine",
+    },
+  ];
   return (
     <main className="aero-page bubble-field text-aero-ink">
+      <div className="floating-sparkles" aria-hidden="true" />
+      <div className="fixed inset-0 flex items-center justify-center text-6xl font-bold text-aero-ink/20 pointer-events-none">
+        test
+      </div>
+      <img
+        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmp1NWFxYWhxODBvam93cnpjaHllOWdhOHQ0Z2I5NWdndm15cXdhZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/EXHHMS9caoxAA/giphy.gif"
+        alt="Added GIF"
+        className="absolute top-4 left-4 h-24 w-auto rounded-lg border border-aero-glass/50 backdrop-blur-sm"
+      />
+      <img
+        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmp1NWFxYWhxODBvam93cnpjaHllOWdhOHQ0Z2I5NWdndm15cXdhZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/rW6CpFhDj9lkc/200.webp"
+        alt="Added GIF"
+        className="absolute top-4 right-4 h-24 w-auto rounded-lg border border-aero-glass/50 backdrop-blur-sm"
+      />
       <div className="pointer-events-none absolute inset-0 water-ripple opacity-70" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-aero-sun/70 blur-3xl" />
       <div className="pointer-events-none absolute right-[11%] top-12 size-32 sun-flare opacity-80" />
@@ -87,17 +134,14 @@ function Index() {
             <span className="glossy-chip grid size-10 place-items-center rounded-full">
               <PawPrint className="size-5 text-paw" aria-hidden="true" />
             </span>
-            Aero Pawprints
+            Happy birthday to my beautiful lady and best friend (:
           </a>
           <div className="hidden items-center gap-2 text-sm font-bold text-aero-ink/75 sm:flex">
             <a className="rounded-full px-4 py-2 transition hover:bg-aero-glass-strong" href="#photos">
-              Photos
-            </a>
-            <a className="rounded-full px-4 py-2 transition hover:bg-aero-glass-strong" href="#gifs">
-              GIFs
+              US ❤️
             </a>
             <a className="rounded-full px-4 py-2 transition hover:bg-aero-glass-strong" href="#notes">
-              Notes
+              L's
             </a>
           </div>
         </nav>
@@ -153,20 +197,22 @@ function Index() {
 
       <section id="photos" className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <div>
+          <div className="flex items-baseline gap-4">
             <p className="font-display text-sm font-black uppercase tracking-widest text-primary">Personal photos</p>
-            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink sm:text-5xl">Green glossy animal frames</h2>
+            <h2 className="mt-0 font-display text-4xl font-black text-aero-ink sm:text-5xl">where you look the prettiest</h2>
+            <img
+              src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWdvYTBvcm9lNDZ1Njd2aGJrMTE1MXVuZDFzOXk1bHdjeWxmNXdyciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/haKiarGuVmE9W1aKmc/200.webp"
+              alt="Added GIF"
+              className="h-36 w-auto rounded-lg border border-aero-glass/50 backdrop-blur-sm"
+            />
           </div>
-          <p className="max-w-md text-base font-medium leading-7 text-muted-foreground">
-            Each area is clearly labeled so the example photos can be replaced with your own pictures later.
-          </p>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {galleryItems.map((item, index) => (
-            <article key={item.label} className="group cat-ear-card glass-panel rounded-[1.8rem] p-3 transition duration-300 hover:-translate-y-1">
+            <article key={item.label} className="group cat-ear-card glass-panel rounded-[1.8rem] p-3 transition duration-300 hover:-translate-y-1" onClick={() => { setSelectedImage(item.src); setIsModalOpen(true); }}>
               <div className="animal-frame relative aspect-[4/5] overflow-hidden bg-aero-soft shadow-xl">
-                <img src={item.src} alt={item.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img src={item.src} alt={item.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" style={index === 1 || index === 2 ? { objectPosition: '55% 50%' } : index === 3 ? { objectPosition: '40% 50%' } : {}} />
                 <div className="absolute inset-0 bg-gradient-to-b from-aero-glass-strong/45 via-transparent to-aero-leaf/45 opacity-80" />
                 <span className="glossy-chip absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black text-aero-ink/75">
                   Paw slot {index + 1}
@@ -195,9 +241,9 @@ function Index() {
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {gifPlaceholders.map((label) => (
-              <div key={label} className="relative min-h-56 overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft p-4 shadow-xl">
-                <img src={waterShimmerAsset.url} alt="Water shimmer GIF placeholder" className="absolute inset-0 h-full w-full object-cover opacity-75" />
+            {gifPlaceholders.map((item) => (
+              <div key={item.label} className="relative min-h-56 overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft p-4 shadow-xl">
+                <img src={item.src} alt="Water shimmer GIF placeholder" className="absolute inset-0 h-full w-full object-cover opacity-75" />
                 <div className="absolute inset-0 bg-gradient-to-br from-aero-glass-strong/75 via-aero-sea/45 to-aero-grass/45" />
                 <div className="grass-bed absolute bottom-0 left-0 right-0 h-20 opacity-35" />
                 <div className="relative flex h-full min-h-48 flex-col justify-between">
@@ -206,7 +252,7 @@ function Index() {
                     GIF area
                   </span>
                   <div>
-                    <p className="font-display text-2xl font-black text-aero-ink">{label}</p>
+                    <p className="font-display text-2xl font-black text-aero-ink">{item.label}</p>
                     <p className="mt-1 text-sm font-bold text-aero-ink/65">A personal GIF will be added here</p>
                   </div>
                 </div>
@@ -220,17 +266,12 @@ function Index() {
         <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="glass-panel cat-ear-card rounded-[2rem] p-7">
             <p className="font-display text-sm font-black uppercase tracking-widest text-primary">Tiny details</p>
-            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink">Fresh, bubbly, and early-2000s bright</h2>
+            <h2 className="mt-2 font-display text-4xl font-black text-aero-ink"> there are many L's we should be grateful for , these are the best</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              "Paw print dividers",
-              "Cat-ear panel accents",
-              "Sea bubbles and green shine",
-            ].map((detail) => (
-              <div key={detail} className="glossy-chip rounded-[1.4rem] p-5 text-center">
-                <PawPrint className="mx-auto mb-3 size-7 text-paw" aria-hidden="true" />
-                <p className="font-display text-lg font-black text-aero-ink">{detail}</p>
+            {noteItems.map((item, index) => (
+              <div key={item.label} className="glossy-chip rounded-[1.4rem] p-5 text-center" onClick={() => { setSelectedImage(item.src); setIsModalOpen(true); }}>
+                <img src={item.src} alt={item.alt} className="h-[3rem] w-auto mx-auto mb-3" />
               </div>
             ))}
           </div>
@@ -243,6 +284,16 @@ function Index() {
           <span>Made for favorite photos, happy GIFs, and small animal charms.</span>
         </div>
       </footer>
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="relative">
+            <button onClick={() => setIsModalOpen(false)} className="absolute top-2 right-2 text-white text-xl">
+              ×
+            </button>
+            <img src={selectedImage!} alt="Preview" className="max-h-[95vh] max-w-[95vw] rounded-lg border border-white/20" />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
