@@ -6,6 +6,7 @@ import catWindowAsset from "@/assets/cat-window.jpg.asset.json";
 import dogMeadowAsset from "@/assets/dog-meadow.jpg.asset.json";
 import foxSnowAsset from "@/assets/fox-snow.jpg.asset.json";
 import waterShimmerAsset from "@/assets/water-shimmer.jpg.asset.json";
+import { Button } from "@/components/ui/button";
 
 const galleryItems = [
   {
@@ -99,9 +100,9 @@ function Index() {
             Glossy glass panels, pastel water glints, paw-print trails, and cozy animal details are already in place for your favorite pictures later.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#photos" className="glossy-button rounded-full px-6 py-3 text-sm font-black transition duration-300 hover:-translate-y-0.5">
-              View picture spaces
-            </a>
+            <Button asChild variant="aero" size="lg">
+              <a href="#photos">View picture spaces</a>
+            </Button>
             <span className="glossy-chip rounded-full px-5 py-3 text-sm font-extrabold text-aero-ink/70">
               Ready for manual photo swaps
             </span>

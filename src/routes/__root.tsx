@@ -85,7 +85,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Aero Pawprints" },
       { property: "og:title", content: "Aero Pawprints" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      {
+        property: "og:description",
+        content: "A cute Frutiger Aero gallery with glossy photo and GIF placeholders.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
