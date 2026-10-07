@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Fish, Heart, Image, PawPrint, Sparkles } from "lucide-react";
+import { Fish, Heart, PawPrint, Sparkles } from "lucide-react";
 import { useRef, useState } from "react";
 import { AeroLoveScene, LoveAnimals } from "@/components/aero-love-scene";
 import { useAeroScroll } from "@/hooks/use-aero-scroll";
