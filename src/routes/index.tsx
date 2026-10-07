@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Fish, Heart, Image, PawPrint, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { AeroLoveScene, LoveAnimals } from "@/components/aero-love-scene";
+import { useAeroScroll } from "@/hooks/use-aero-scroll";
 
 import bunnyGrassAsset from "@/assets/bunny-grass.jpg.asset.json";
 import catWindowAsset from "@/assets/cat-window.jpg.asset.json";
@@ -85,6 +87,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const pageRef = useRef<HTMLElement>(null);
+  useAeroScroll(pageRef);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const noteItems = [
@@ -105,11 +109,9 @@ function Index() {
     },
   ];
   return (
-    <main className="aero-page bubble-field text-aero-ink">
+    <main ref={pageRef} className="aero-page love-page text-aero-ink">
+      <AeroLoveScene />
       <div className="floating-sparkles" aria-hidden="true" />
-      <div className="fixed inset-0 flex items-center justify-center text-6xl font-bold text-aero-ink/20 pointer-events-none">
-        test
-      </div>
       <img
         src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmp1NWFxYWhxODBvam93cnpjaHllOWdhOHQ0Z2I5NWdndm15cXdhZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/EXHHMS9caoxAA/giphy.gif"
         alt="Added GIF"
@@ -120,8 +122,6 @@ function Index() {
         alt="Added GIF"
         className="absolute top-4 right-4 h-24 w-auto rounded-lg border border-aero-glass/50 backdrop-blur-sm"
       />
-      <div className="pointer-events-none absolute inset-0 water-ripple opacity-70" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-aero-sun/70 blur-3xl" />
       <div className="pointer-events-none absolute right-[11%] top-12 size-32 sun-flare opacity-80" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-56 grass-bed opacity-30" />
       {floatingBubbles.map((bubble) => (
@@ -148,32 +148,33 @@ function Index() {
       </header>
 
       <section id="top" className="relative mx-auto grid min-h-[calc(100vh-6rem)] max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-[1.04fr_0.96fr] lg:pt-4">
-        <div className="relative z-10">
+        <div className="relative z-10" data-reveal="0">
           <div className="glossy-chip mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-extrabold text-aero-ink/80">
             <Sparkles className="size-4 text-primary" aria-hidden="true" />
-            Sea-blue bubbles, green grass, sunny memories
+            A little corner of the world, just for you ♡
           </div>
           <h1 className="max-w-3xl font-display text-5xl font-black leading-[0.95] text-aero-ink sm:text-6xl lg:text-7xl">
-            A bright green aqua diary for photos and GIFs.
+            My favorite person. My happiest place.
           </h1>
           <p className="mt-6 max-w-2xl text-lg font-medium leading-8 text-muted-foreground sm:text-xl">
-            Glossy glass panels, fresh grass tones, sea-blue water glints, paw-print trails, and cozy animal details are ready for your favorite pictures later.
+            Happy birthday, beautiful. Here’s to your smile, our little moments, and all the memories we haven’t made yet.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild variant="aero" size="lg">
-              <a href="#photos">View picture spaces</a>
+              <a href="#photos"><Heart className="size-4" /> Our little memories</a>
             </Button>
             <span className="glossy-chip rounded-full px-5 py-3 text-sm font-extrabold text-aero-ink/70">
-              Ready for manual photo swaps
+              Made with so much love ♡
             </span>
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-xl">
+        <div className="relative z-10 mx-auto w-full max-w-xl" data-reveal="120">
+          <LoveAnimals />
           <CornerCat className="absolute -right-5 -top-8 z-20 hidden w-28 text-primary/70 sm:block" />
           <div className="cat-ear-card glass-panel relative rounded-[2rem] p-4 sm:p-5">
             <div className="relative overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft">
-              <img src={waterShimmerAsset.url} alt="Sunlit ocean water shimmer placeholder" className="h-[28rem] w-full object-cover" />
+              <img src="/1.jpeg" alt="A favorite personal memory" className="h-[28rem] w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-b from-aero-glass-strong/60 via-transparent to-aero-sky-deep/35" />
               <div className="grass-bed absolute bottom-0 left-0 right-0 h-28 opacity-45" />
               <div className="absolute left-6 top-8 flex gap-3 text-aero-sun">
@@ -181,8 +182,8 @@ function Index() {
                 <Fish className="mt-10 size-5 -rotate-12 text-aero-grass drop-shadow-md" aria-hidden="true" />
               </div>
               <div className="absolute bottom-5 left-5 right-5 rounded-[1.4rem] bg-aero-glass-strong/75 p-4 shadow-2xl backdrop-blur-md">
-                <p className="text-xs font-black uppercase tracking-widest text-primary">Main picture placeholder</p>
-                <p className="mt-1 text-2xl font-black text-aero-ink">Your favorite photo can live here</p>
+                <p className="text-xs font-black uppercase tracking-widest text-primary">Always you ♡</p>
+                <p className="mt-1 text-2xl font-black text-aero-ink">Life is sweeter with you in it.</p>
               </div>
               <div className="absolute right-5 top-5 grid size-16 place-items-center rounded-full bg-aero-glass-strong/70 shadow-xl backdrop-blur-md">
                 <Heart className="size-8 fill-paw text-paw" aria-hidden="true" />
@@ -196,7 +197,7 @@ function Index() {
       <PawDivider />
 
       <section id="photos" className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <div data-reveal="0" className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div className="flex items-baseline gap-4">
             <p className="font-display text-sm font-black uppercase tracking-widest text-primary">Personal photos</p>
             <h2 className="mt-0 font-display text-4xl font-black text-aero-ink sm:text-5xl">where you look the prettiest</h2>
@@ -210,9 +211,9 @@ function Index() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {galleryItems.map((item, index) => (
-            <article key={item.label} className="group cat-ear-card glass-panel rounded-[1.8rem] p-3 transition duration-300 hover:-translate-y-1" onClick={() => { setSelectedImage(item.src); setIsModalOpen(true); }}>
+            <article data-reveal={index * 80} key={item.label} className="group cat-ear-card glass-panel memory-card rounded-[1.8rem] p-3 transition duration-300 hover:-translate-y-1" onClick={() => { setSelectedImage(item.src); setIsModalOpen(true); }}>
               <div className="animal-frame relative aspect-[4/5] overflow-hidden bg-aero-soft shadow-xl">
-                <img src={item.src} alt={item.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" style={index === 1 || index === 2 ? { objectPosition: '55% 50%' } : index === 3 ? { objectPosition: '40% 50%' } : {}} />
+                <img loading="lazy" src={item.src} alt={item.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" style={index === 1 || index === 2 ? { objectPosition: '55% 50%' } : index === 3 ? { objectPosition: '40% 50%' } : {}} />
                 <div className="absolute inset-0 bg-gradient-to-b from-aero-glass-strong/45 via-transparent to-aero-leaf/45 opacity-80" />
                 <span className="glossy-chip absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black text-aero-ink/75">
                   Paw slot {index + 1}
@@ -229,7 +230,7 @@ function Index() {
 
       <PawDivider />
 
-      <section id="gifs" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section id="gifs" data-reveal="0" className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="glass-panel relative overflow-hidden rounded-[2rem] p-5 sm:p-8 lg:p-10">
           <CornerBunny className="absolute right-6 top-6 hidden w-24 text-primary/55 md:block" />
           <div className="max-w-2xl">
@@ -242,7 +243,7 @@ function Index() {
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {gifPlaceholders.map((item) => (
-              <div key={item.label} className="relative min-h-56 overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft p-4 shadow-xl">
+              <div data-reveal={80} key={item.label} className="relative min-h-56 overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft p-4 shadow-xl">
                 <img src={item.src} alt="Water shimmer GIF placeholder" className="absolute inset-0 h-full w-full object-cover opacity-75" />
                 <div className="absolute inset-0 bg-gradient-to-br from-aero-glass-strong/75 via-aero-sea/45 to-aero-grass/45" />
                 <div className="grass-bed absolute bottom-0 left-0 right-0 h-20 opacity-35" />
@@ -262,7 +263,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="notes" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section id="notes" data-reveal="0" className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="glass-panel cat-ear-card rounded-[2rem] p-7">
             <p className="font-display text-sm font-black uppercase tracking-widest text-primary">Tiny details</p>
@@ -270,7 +271,7 @@ function Index() {
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {noteItems.map((item, index) => (
-              <div key={item.label} className="glossy-chip rounded-[1.4rem] p-5 text-center" onClick={() => { setSelectedImage(item.src); setIsModalOpen(true); }}>
+              <div data-reveal={index * 80} key={item.label} className="glossy-chip rounded-[1.4rem] p-5 text-center" onClick={() => { setSelectedImage(item.src); setIsModalOpen(true); }}>
                 <img src={item.src} alt={item.alt} className="h-[3rem] w-auto mx-auto mb-3" />
               </div>
             ))}
@@ -278,19 +279,19 @@ function Index() {
         </div>
       </section>
 
-      <footer className="mx-auto max-w-6xl px-4 pb-8 pt-8 sm:px-6">
+      <footer data-reveal="0" className="relative mx-auto max-w-6xl px-4 pb-8 pt-8 sm:px-6">
         <div className="glass-panel flex flex-col items-center justify-between gap-3 rounded-full px-6 py-4 text-center text-sm font-bold text-aero-ink/70 sm:flex-row">
-          <span>Aero Pawprints</span>
-          <span>Made for favorite photos, happy GIFs, and small animal charms.</span>
+          <span className="flex items-center gap-2"><Heart className="size-4 text-love" /> With love, always.</span>
+          <span>For my beautiful lady and bestest friend ♡</span>
         </div>
       </footer>
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      {isModalOpen && selectedImage && (
+        <div className="photo-overlay fixed inset-0 z-50 flex items-center justify-center">
           <div className="relative">
-            <button onClick={() => setIsModalOpen(false)} className="absolute top-2 right-2 text-white text-xl">
+            <Button aria-label="Close photo" variant="aero" size="icon" onClick={() => setIsModalOpen(false)} className="absolute top-2 right-2 text-xl">
               ×
-            </button>
-            <img src={selectedImage!} alt="Preview" className="max-h-[95vh] max-w-[95vw] rounded-lg border border-white/20" />
+            </Button>
+            <img src={selectedImage} alt="Preview" className="max-h-[95vh] max-w-[95vw] rounded-lg border border-aero-glass" />
           </div>
         </div>
       )}

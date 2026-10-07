@@ -162,6 +162,7 @@
   --color-aero-sun: var(--aero-sun);
   --color-aero-bubble: var(--aero-bubble);
   --color-paw: var(--paw);
+  --color-love: var(--love);
   --color-paw-foreground: var(--paw-foreground);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
@@ -217,6 +218,9 @@
   --aero-sun: oklch(0.932 0.123 97.6);
   --aero-bubble: oklch(0.994 0.013 199 / 72%);
   --paw: oklch(0.686 0.151 137.8);
+  --love: oklch(0.69 0.16 8);
+  --scene-wash: linear-gradient(180deg, oklch(0.96 0.035 210 / 66%), oklch(0.97 0.04 160 / 78%) 50%, oklch(0.95 0.055 140 / 88%));
+  --photo-scrim: oklch(0.18 0.035 180 / 75%);
   --paw-foreground: oklch(0.995 0.008 216);
   --font-display: "Nunito", "Trebuchet MS", sans-serif;
   --font-sans: "Nunito", "Trebuchet MS", sans-serif;
@@ -278,7 +282,7 @@
   position: relative;
   overflow-x: clip;
   min-height: 100vh;
-  background-image: url("@/assets/theme-background.jpg");
+  background-image: linear-gradient(180deg, var(--aero-sky), var(--aero-mint));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -298,7 +302,7 @@
       radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--aero-mint) 25%, transparent) 0%, transparent 40%),
       radial-gradient(circle at 40% 80%, color-mix(in oklab, var(--aero-blush) 20%, transparent) 0%, transparent 35%);
     background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    animation: slowFloat 15s ease-in-out infinite;
     opacity: 0.3;
   }
 
@@ -321,7 +325,7 @@
     radial-gradient(ellipse at 48% 58%, color-mix(in oklab, white 50%, transparent) 0 0.18rem, transparent 0.2rem),
     repeating-radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--aero-sea) 20%, transparent) 0 0.1rem, transparent 0.1rem 1.28rem),
     linear-gradient(90deg, transparent, color-mix(in oklab, var(--aero-grass) 7%, transparent), transparent);
-  animation: waterFlow 8s linear infinite;
+  animation: slowFloat 8s ease-in-out infinite;
   opacity: 0.7;
 }
 
@@ -440,7 +444,7 @@
     radial-gradient(circle, color-mix(in oklab, white 96%, transparent) 0 0.45rem, transparent 0.5rem),
     conic-gradient(from 0deg, transparent 0 7%, color-mix(in oklab, white 86%, transparent) 8% 10%, transparent 11% 20%, color-mix(in oklab, white 72%, transparent) 21% 23%, transparent 24% 100%);
   filter: drop-shadow(0 0 1.3rem color-mix(in oklab, var(--aero-sun) 54%, transparent));
-  animation: glowPulse 4s ease-in-out infinite;
+  animation: pulseSoft 4s ease-in-out infinite;
 }
 
 @utility bubble-orb {
@@ -500,4 +504,92 @@
       20rem -5rem 0 0.12rem color-mix(in oklab, white 65%, var(--aero-leaf)),
       -5rem -10rem 0 0.09rem color-mix(in oklab, white 75%, var(--aero-water));
   }
+}
+
+/* A quiet photographic landscape behind the glass, with handmade edge details. */
+.love-page { isolation: isolate; background: var(--background); background-attachment: scroll; }
+.love-page::before, .love-page::after { display: none; }
+.love-scene { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.garden-layer { position: absolute; inset: -90px 0; }
+.garden-layer img { width: 100%; height: 100%; object-fit: cover; }
+.garden-wash { position: absolute; inset: 0; background: var(--scene-wash); }
+.vine-layer { position: absolute; top: 10%; width: 120px; height: 700px; color: var(--aero-leaf); opacity: .32; }
+.vine-layer svg { height: 100%; width: 100%; animation: vine-sway 11s ease-in-out infinite; transform-origin: top center; }
+.vine-left { left: -25px; }
+.vine-right { right: -28px; top: 36%; }
+.vine-right svg { scale: -1 1; animation-delay: -5s; }
+.leaves-layer { position: absolute; inset: 0; }
+.floating-leaf { position: absolute; width: 25px; height: 42px; color: var(--aero-leaf); opacity: .46; }
+.floating-leaf svg { width: 100%; height: 100%; animation: leaf-drift 9s ease-in-out infinite; }
+.leaf-0 { left: 4%; top: 22%; rotate: 35deg; }
+.leaf-1 { right: 6%; top: 30%; rotate: -30deg; width: 32px; }
+.leaf-2 { left: 12%; top: 68%; rotate: -25deg; color: var(--aero-grass); }
+.leaf-3 { right: 15%; top: 81%; rotate: 65deg; }
+.leaf-4 { left: 36%; top: 92%; rotate: 120deg; color: var(--aero-grass); }
+.leaf-5 { right: 3%; top: 97%; rotate: -45deg; }
+.leaf-6 { left: 2%; top: 100%; rotate: 30deg; }
+.leaf-7 { right: 32%; top: 12%; width: 18px; opacity: .25; rotate: 45deg; }
+.floating-leaf:nth-child(even) svg { animation-delay: -4s; animation-duration: 12s; }
+.scroll-heart { position: absolute; width: 38px; height: 38px; color: var(--love); fill: color-mix(in oklab, var(--love) 18%, transparent); stroke-width: 1.25; opacity: .25; }
+.heart-0 { left: 6%; top: 44%; width: 56px; height: 56px; }
+.heart-1 { right: 7%; top: 64%; }
+.heart-2 { left: 24%; top: 84%; width: 24px; }
+.heart-3 { right: 19%; top: 23%; width: 28px; }
+.heart-4 { left: 2%; top: 94%; }
+.heart-5 { right: 3%; top: 90%; width: 62px; height: 62px; }
+.heart-6 { left: 45%; top: 36%; width: 20px; }
+.scene-paws { position: absolute; right: 2%; top: 48%; display: grid; gap: 30px; color: var(--paw); opacity: .15; rotate: -18deg; }
+.scene-paws svg { width: 22px; height: 22px; }
+.scene-paws svg:nth-child(2) { margin-left: 22px; }
+.love-animals { position: absolute; top: -66px; right: 44px; width: 174px; height: 110px; z-index: 12; pointer-events: none; }
+.peeking-cat { position: absolute; width: 106px; height: 90px; color: var(--aero-leaf); left: 0; top: 15px; animation: cat-peek 8s ease-in-out infinite; transform-origin: bottom center; }
+.peeking-dog { position: absolute; width: 94px; height: 82px; color: var(--paw); right: -5px; top: 26px; animation: cat-peek 9s ease-in-out infinite; animation-delay: -4s; transform-origin: bottom center; }
+.animal-love-heart { position: absolute; width: 22px; height: 22px; color: var(--love); fill: color-mix(in oklab, var(--love) 28%, transparent); left: 77px; top: 12px; animation: love-beat 4s ease-in-out infinite; }
+.love-page .glass-panel { backdrop-filter: blur(12px) saturate(1.2); }
+.memory-card { cursor: pointer; }
+.memory-card .animal-frame { clip-path: none; border-radius: 1.25rem; }
+.memory-card::after { border-radius: 50%; width: 1.8rem; height: 1.8rem; top: auto; bottom: 18px; right: 18px; background: var(--aero-glass); }
+.love-page #photos > div:first-child > div { flex-wrap: wrap; align-items: center; }
+.love-page #photos > div:first-child p { flex-basis: 100%; }
+.love-page #photos > div:first-child h2 { flex: 1 1 260px; }
+.love-page #photos > div:first-child img { height: 88px; max-width: 120px; object-fit: contain; }
+.love-page #top { min-height: min(780px, calc(100svh - 6rem)); }
+.love-page #top h1 { line-height: 1.06; text-wrap: balance; }
+.love-page #top > div:last-child > svg { display: none; }
+.love-page nav > a { min-width: 0; max-width: 75%; }
+.love-page nav > a > span { flex-shrink: 0; }
+.love-page footer { position: relative; }
+.photo-overlay { background: var(--photo-scrim); backdrop-filter: blur(8px); }
+[id] { scroll-margin-top: 115px; }
+@keyframes leaf-drift { 0%, 100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(9px,-15px,0) rotate(14deg); } }
+@keyframes vine-sway { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@keyframes cat-peek { 0%,75%,100% { transform: translate3d(0,0,0) rotate(0deg); } 82% { transform: translate3d(0,-5px,0) rotate(-5deg); } 90% { transform: translate3d(0,-3px,0) rotate(3deg); } }
+@keyframes love-beat { 0%,70%,100% { transform: scale(1); } 78% { transform: scale(1.15) rotate(-6deg); } 86% { transform: scale(1.04); } }
+@media (max-width: 1023px) {
+  .love-page #top { min-height: auto; padding-top: 42px; gap: 85px; padding-bottom: 64px; }
+  .love-page #top > div:last-child { max-width: 480px; }
+  .love-page #top > div:first-child { max-width: 650px; }
+}
+@media (max-width: 639px) {
+  .love-page header { padding: 12px; }
+  .love-page nav { border-radius: 24px; padding: 12px 16px; }
+  .love-page nav > a { font-size: 14px; line-height: 1.4; max-width: 100%; }
+  .love-page #top h1 { font-size: 44px; }
+  .love-page #top .glossy-chip { font-size: 12px; }
+  .love-page #top p { font-size: 17px; line-height: 1.75; }
+  .love-page #top img { height: 360px; }
+  .vine-layer { width: 76px; opacity: .2; }
+  .scroll-heart { max-width: 32px; max-height: 32px; }
+  .leaf-4, .leaf-7, .heart-2, .heart-6 { display: none; }
+  .love-page .glass-panel { backdrop-filter: blur(8px); }
+  .love-page #photos h2, .love-page #gifs h2, .love-page #notes h2 { font-size: 32px; line-height: 1.2; }
+  .love-page #photos > div:first-child img { height: 64px; max-width: 80px; }
+  .love-animals { right: 32px; }
+  .love-page footer > div { border-radius: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .love-page *, .love-page *::before, .love-page *::after { animation: none !important; transition: none !important; }
+  .garden-layer, .vine-layer, .leaves-layer, .scene-paws, .scroll-heart { transform: none !important; }
+  [data-reveal] { opacity: 1 !important; }
 }

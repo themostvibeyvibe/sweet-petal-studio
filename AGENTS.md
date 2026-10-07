@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the site as a single polished visual homepage with CDN-backed placeholder assets unless the user requests more pages; this preserves the simple gallery focus.
+- Keep scroll decoration in an isolated scene component and hook using one passive, frame-batched scroll listener and intersection-based entrances; this avoids React rerenders and layout work during scrolling.
