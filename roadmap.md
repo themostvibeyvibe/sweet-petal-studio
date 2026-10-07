@@ -1,3 +1,3 @@
-- [ ] Add layered nature imagery, greenery, hearts and animal details without changing page sections.
-- [ ] Add smooth scroll reveals and parallax with reduced-motion support.
-- [ ] Verify scrolling, photo previews, and narrow-screen usability.
+- [x] Add layered nature imagery, greenery, hearts and animal details without changing page sections.
+- [x] Add smooth scroll reveals and parallax with reduced-motion support.
+- [x] Verify scrolling, photo previews, and narrow-screen usability.

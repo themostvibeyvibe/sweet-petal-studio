@@ -20,7 +20,7 @@ export function useAeroScroll(root: RefObject<HTMLElement | null>) {
             { opacity: 0, transform: "translate3d(0, 42px, 0) scale(.97) rotate(-.7deg)" },
             { opacity: 1, transform: "translate3d(0, -5px, 0) scale(1.006) rotate(.15deg)", offset: .72 },
             { opacity: 1, transform: "translate3d(0, 0, 0) scale(1) rotate(0deg)" },
-          ], { duration: 950, delay: Number(element.dataset.reveal || 0), easing: "cubic-bezier(.2,.7,.2,1)" });
+          ], { duration: 950, delay: Number(element.dataset['reveal'] || 0), easing: "cubic-bezier(.2,.7,.2,1)", fill: "backwards" });
           animations.add(animation);
           animation.onfinish = () => animations.delete(animation);
           observer.unobserve(element);
@@ -38,7 +38,7 @@ export function useAeroScroll(root: RefObject<HTMLElement | null>) {
         frame = 0;
         const progress = Math.min(1, Math.max(0, window.scrollY / height));
         layers.forEach((layer) => {
-          const speed = Number(layer.dataset.parallax || 0);
+          const speed = Number(layer.dataset['parallax'] || 0);
           layer.style.transform = `translate3d(0, ${progress * speed}px, 0)`;
         });
         hearts.forEach((heart, index) => {
