@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Fish, Heart, Image, PawPrint, Sparkles } from "lucide-react";
+import { Fish, Heart, PawPrint, Sparkles } from "lucide-react";
 import { useRef, useState } from "react";
 import { AeroLoveScene, LoveAnimals } from "@/components/aero-love-scene";
 import { useAeroScroll } from "@/hooks/use-aero-scroll";
@@ -246,17 +246,6 @@ function Index() {
               <div data-reveal={80} key={item.label} className="relative min-h-56 overflow-hidden rounded-[1.6rem] border border-aero-glass-strong bg-aero-soft p-4 shadow-xl">
                 <img src={item.src} alt="Water shimmer GIF placeholder" className="absolute inset-0 h-full w-full object-cover opacity-75" />
                 <div className="absolute inset-0 bg-gradient-to-br from-aero-glass-strong/75 via-aero-sea/45 to-aero-grass/45" />
-                <div className="grass-bed absolute bottom-0 left-0 right-0 h-20 opacity-35" />
-                <div className="relative flex h-full min-h-48 flex-col justify-between">
-                  <span className="glossy-chip inline-flex w-fit items-center gap-2 rounded-full px-3 py-2 text-xs font-black text-aero-ink/75">
-                    <Image className="size-4 text-primary" aria-hidden="true" />
-                    GIF area
-                  </span>
-                  <div>
-                    <p className="font-display text-2xl font-black text-aero-ink">{item.label}</p>
-                    <p className="mt-1 text-sm font-bold text-aero-ink/65">A personal GIF will be added here</p>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
