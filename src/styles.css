@@ -162,6 +162,7 @@
   --color-aero-sun: var(--aero-sun);
   --color-aero-bubble: var(--aero-bubble);
   --color-paw: var(--paw);
+  --color-love: var(--love);
   --color-paw-foreground: var(--paw-foreground);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
@@ -217,6 +218,9 @@
   --aero-sun: oklch(0.932 0.123 97.6);
   --aero-bubble: oklch(0.994 0.013 199 / 72%);
   --paw: oklch(0.686 0.151 137.8);
+  --love: oklch(0.69 0.16 8);
+  --scene-wash: linear-gradient(180deg, oklch(0.96 0.035 210 / 66%), oklch(0.97 0.04 160 / 78%) 50%, oklch(0.95 0.055 140 / 88%));
+  --photo-scrim: oklch(0.18 0.035 180 / 75%);
   --paw-foreground: oklch(0.995 0.008 216);
   --font-display: "Nunito", "Trebuchet MS", sans-serif;
   --font-sans: "Nunito", "Trebuchet MS", sans-serif;
@@ -278,7 +282,7 @@
   position: relative;
   overflow-x: clip;
   min-height: 100vh;
-  background-image: url("@/assets/theme-background.jpg");
+  background-image: linear-gradient(180deg, var(--aero-sky), var(--aero-mint));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -298,7 +302,7 @@
       radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--aero-mint) 25%, transparent) 0%, transparent 40%),
       radial-gradient(circle at 40% 80%, color-mix(in oklab, var(--aero-blush) 20%, transparent) 0%, transparent 35%);
     background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    animation: slowFloat 15s ease-in-out infinite;
     opacity: 0.3;
   }
 
@@ -321,7 +325,7 @@
     radial-gradient(ellipse at 48% 58%, color-mix(in oklab, white 50%, transparent) 0 0.18rem, transparent 0.2rem),
     repeating-radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--aero-sea) 20%, transparent) 0 0.1rem, transparent 0.1rem 1.28rem),
     linear-gradient(90deg, transparent, color-mix(in oklab, var(--aero-grass) 7%, transparent), transparent);
-  animation: waterFlow 8s linear infinite;
+  animation: slowFloat 8s ease-in-out infinite;
   opacity: 0.7;
 }
 
@@ -440,7 +444,7 @@
     radial-gradient(circle, color-mix(in oklab, white 96%, transparent) 0 0.45rem, transparent 0.5rem),
     conic-gradient(from 0deg, transparent 0 7%, color-mix(in oklab, white 86%, transparent) 8% 10%, transparent 11% 20%, color-mix(in oklab, white 72%, transparent) 21% 23%, transparent 24% 100%);
   filter: drop-shadow(0 0 1.3rem color-mix(in oklab, var(--aero-sun) 54%, transparent));
-  animation: glowPulse 4s ease-in-out infinite;
+  animation: pulseSoft 4s ease-in-out infinite;
 }
 
 @utility bubble-orb {
