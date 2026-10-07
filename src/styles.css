@@ -507,7 +507,7 @@
 }
 
 /* A quiet photographic landscape behind the glass, with handmade edge details. */
-.love-page { isolation: isolate; background: var(--background); }
+.love-page { isolation: isolate; background: var(--background); background-attachment: scroll; }
 .love-page::before, .love-page::after { display: none; }
 .love-scene { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 .garden-layer { position: absolute; inset: -90px 0; }

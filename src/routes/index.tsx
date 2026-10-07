@@ -21,7 +21,7 @@ const galleryItems = [
   {
     label: "Personal picture placeholder 02",
     caption: "A sweet everyday moment will go here",
-    src: dogMeadowAsset.url,
+    src: "/2.jpeg",
     alt: "Happy dog standing in a meadow",
   },
   {
@@ -94,17 +94,17 @@ function Index() {
   const noteItems = [
     {
       label: "Paw print dividers",
-      src: catWindowAsset.url,
+      src: "/13.jpeg",
       alt: "Paw print dividers",
     },
     {
       label: "Cat-ear panel accents",
-      src: bunnyGrassAsset.url,
+      src: "/12.jpeg",
       alt: "Cat-ear panel accents",
     },
     {
       label: "Sea bubbles and green shine",
-      src: foxSnowAsset.url,
+      src: "/12313.jpeg",
       alt: "Sea bubbles and green shine",
     },
   ];
